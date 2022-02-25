@@ -51,11 +51,11 @@ describe('Pruebas de usuarios', () => {
             </Router>
         )
         expect(wrapper).toMatchSnapshot()
-        expect(wrapper.find('Router')).toEqual(isAuthenticated)
+        expect(wrapper.find(Route).prop('element').props.isAuthenticated).toBeFalsy()
     })
 
     test('Muestra cuando el usuario es administrador', () => {
-        const isAdmin = true
+        const isAdmin = false
         const wrapper = shallow(
             <Router>
                 <Routes>
@@ -66,5 +66,6 @@ describe('Pruebas de usuarios', () => {
             </Router>
         )
         expect(wrapper).toMatchSnapshot()
+        expect(wrapper.find(Route).prop('element').props.isAdmin).toBeFalsy()
     })
 })
